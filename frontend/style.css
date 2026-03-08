@@ -5,72 +5,128 @@ body{
     color: white;
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
 
     height: 100vh;
 }
 
 .container{
-
     background-color: #1e293b;
-
     padding: 40px;
-
     border-radius: 10px;
-
     width: 400px;
-
     text-align: center;
 
 }
 
 input{
-
     width: 100%;
-
     padding: 12px;
-
     margin-top: 15px;
-
     border-radius: 5px;
-
     border: none;
 
 }
 
 button{
-
     width: 100%;
-
     margin-top: 15px;
-
     padding: 12px;
-
     background-color: #22c55e;
-
     border: none;
-
     border-radius: 5px;
-
     color: white;
-
     font-size: 16px;
-
     cursor: pointer;
 
 }
 
 button:hover{
 
-    background-color: #16a34a;
+    background-color: #0eb863;
 
 }
 
 #result{
 
     margin-top: 20px;
-
     font-size: 22px;
 
+}
+h1{
+text-align: center;
+margin-top: 40px;
+margin-bottom: 30px;
+font-size: 36px;
+}
+
+.main-wrapper{
+    display:flex;
+    align-items:center;
+    gap:80px;
+}
+
+.lamp{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background-color:rgb(255, 255, 255);
+
+    box-shadow:
+        0 0 30px rgba(255,255,255,0.6),
+        0 0 60px rgba(255,255,255,0.3);
+
+    transition: all 0.4s ease;
+}
+
+/* CLEAN MESSAGE */
+
+.lamp.clean{
+    background-color:#145304;
+
+    box-shadow:
+        0 0 40px rgba(60,255,110,0.8),
+        0 0 80px rgba(60,255,110,0.5);
+}
+
+/* TOXIC MESSAGE */
+
+.lamp.toxic{
+    background-color:#ff3c3c;
+
+    box-shadow:
+        0 0 40px rgba(255,60,60,0.8),
+        0 0 80px rgba(255,60,60,0.5);
+}
+.title{
+    text-align:center;
+    margin-bottom:40px;
+    margin-left:20px;
+    font-size:32px;
+}
+
+.main-layout{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:80px;
+}
+.lamp{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:white;
+    box-shadow:0 0 40px white;
+}
+
+.lamp.clean{
+    background:lightgreen;
+    box-shadow:0 0 60px lightgreen;
+}
+
+.lamp.toxic{
+    background:red;
+    box-shadow:0 0 60px red;
 }
