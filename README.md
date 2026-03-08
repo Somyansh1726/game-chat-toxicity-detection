@@ -28,3 +28,5 @@ support safer online communication across different digital environments.
 ## Team Members
 - Somyansh Bishnoi  
 - Preksha Verma  
+- frontend UI implemented by Preksha 
+- backend done by Somyansh
