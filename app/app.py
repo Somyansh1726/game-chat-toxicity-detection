@@ -6,10 +6,10 @@ app = Flask(__name__)
 CORS(app)
 
 # Load trained model and vectorizer
-with open("toxicity_model.pkl", "rb") as f:
+with open("multilabel_model.pkl", "rb") as f:
     model = pickle.load(f)
 
-with open("tfidf_vectorizer.pkl", "rb") as f:
+with open("multilabel_vectorizer.pkl", "rb") as f:
     vectorizer = pickle.load(f)
 
 @app.route("/")
@@ -25,17 +25,20 @@ def predict():
         return jsonify({"error": "No text provided"}), 400
 
     text_vec = vectorizer.transform([text])
-    prediction = model.predict(text_vec)[0]
 
-    if prediction == 1:
-        result = "toxic"
-    else:
-        result = "clean"
+    probs = model.predict_proba(text_vec)
 
-    return jsonify({
-        "input_text": text,
-        "prediction": result
-    })
+    labels = ["toxic", "insult", "obscene", "threat"]
+    result = {}
+
+    for i, label in enumerate(labels):
+        prob = probs[i][0][1]
+        result[label] = bool(prob > 0.3)
+
+    print("PREDICTION:", result)
+    return jsonify(result)
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+

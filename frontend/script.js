@@ -1,3 +1,4 @@
+console.log("JS LOADED");
 async function analyze(){
 
     const message = document.getElementById("message").value;
@@ -17,28 +18,51 @@ async function analyze(){
     });
 
     const data = await response.json();
+    console.log(data);
 
     const resultDiv = document.getElementById("result");
     const lamp = document.getElementById("lamp");
 
 
-if(data.prediction === "toxic"){
+let resultText = "";
+let color = "";
+let lampClass = "";
 
-    resultDiv.innerHTML = "🔴 Toxic Message";
-    resultDiv.style.color = "red";
-
-    lamp.classList.remove("clean");
-    lamp.classList.add("toxic");
-
+// Severity logic
+if (data.threat) {
+    resultText = "🔴 Threat Detected";
+    color = "red";
+    lampClass = "toxic";
 }
-else{
-
-    resultDiv.innerHTML = "🟢 Clean Message";
-    resultDiv.style.color = "lightgreen";
-
-    lamp.classList.remove("toxic");
-    lamp.classList.add("clean");
-
+else if (data.obscene) {
+    resultText = "🔴 Obscene Content";
+    color = "red";
+    lampClass = "toxic";
+}
+else if (data.insult) {
+    resultText = "🟡 Insult Detected";
+    color = "yellow";
+    lampClass = "toxic";
+}
+else if (data.toxic) {
+    resultText = "🟡 Toxic Message";
+    color = "yellow";
+    lampClass = "toxic";
+}
+else {
+    resultText = "🟢 Clean Message";
+    color = "lightgreen";
+    lampClass = "clean";
 }
 
+// Apply to UI
+resultDiv.innerHTML = resultText;
+resultDiv.style.color = color;
+
+// Lamp update
+lamp.classList.remove("clean", "toxic");
+lamp.classList.add(lampClass);
+
+console.log("FULL DATA:",data);
 }
+
