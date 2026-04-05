@@ -32,8 +32,11 @@ def predict():
     result = {}
 
     for i, label in enumerate(labels):
-        prob = probs[i][0][1]
-        result[label] = bool(prob > 0.3)
+        prob = float(probs[i][0][1])  # convert to normal float
+        result[label] = {
+            "value": prob > 0.3,
+            "confidence": round(prob * 100, 2)
+            }
 
     print("PREDICTION:", result)
     return jsonify(result)
