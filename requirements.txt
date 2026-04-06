@@ -1,4 +1,7 @@
 pandas
 numpy
 scikit-learn
-streamlit
+flask
+flask-cors
+gunicorn
+
