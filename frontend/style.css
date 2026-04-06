@@ -1,140 +1,90 @@
-body{
-
+body {
     font-family: Arial;
     background-color: #0f172a;
     color: white;
-
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-
     height: 100vh;
 }
 
-.container{
-    background-color: #1e293b;
+.title {
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-size: 34px;
+}
+
+.main-layout {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+.container {
+    background-color: #020617;
     padding: 40px;
-    border-radius: 10px;
-    width: 400px;
+    border-radius: 14px;
+    width: 420px;
     text-align: center;
-
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
 
-input{
+input {
     width: 100%;
     padding: 12px;
     margin-top: 15px;
-    border-radius: 5px;
+    border-radius: 6px;
     border: none;
-
 }
 
-button{
+button {
     width: 100%;
     margin-top: 15px;
     padding: 12px;
-    background-color: #22c55e;
+    background: linear-gradient(90deg, #22c55e, #4ade80);
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     color: white;
     font-size: 16px;
     cursor: pointer;
-
+    transition: 0.3s;
 }
 
-button:hover{
-
-    background-color: #0eb863;
-
+button:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
 }
 
-#result{
-
+#result {
     margin-top: 20px;
-    font-size: 22px;
-
-}
-h1{
-text-align: center;
-margin-top: 40px;
-margin-bottom: 30px;
-font-size: 36px;
+    font-size: 20px;
 }
 
-.main-wrapper{
-    display:flex;
-    align-items:center;
-    gap:80px;
+.lamp {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 0 40px white;
+    transition: 0.4s;
 }
 
-.lamp{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    background-color:rgb(255, 255, 255);
-
-    box-shadow:
-        0 0 30px rgba(255,255,255,0.6),
-        0 0 60px rgba(255,255,255,0.3);
-
-    transition: all 0.4s ease;
+.lamp.clean {
+    background: #22c55e;
+    box-shadow: 0 0 60px #22c55e;
 }
 
-/* CLEAN MESSAGE */
-
-.lamp.clean{
-    background-color:#145304;
-
-    box-shadow:
-        0 0 40px rgba(60,255,110,0.8),
-        0 0 80px rgba(60,255,110,0.5);
+.lamp.toxic {
+    background: #ef4444;
+    box-shadow: 0 0 60px #ef4444;
 }
 
-/* TOXIC MESSAGE */
-
-.lamp.toxic{
-    background-color:#ff3c3c;
-
-    box-shadow:
-        0 0 40px rgba(255,60,60,0.8),
-        0 0 80px rgba(255,60,60,0.5);
-}
-.title{
-    text-align:center;
-    margin-bottom:40px;
-    margin-left:20px;
-    font-size:32px;
-}
-
-.main-layout{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:80px;
-}
-.lamp{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    background:white;
-    box-shadow:0 0 40px white;
-}
-
-.lamp.clean{
-    background:lightgreen;
-    box-shadow:0 0 60px lightgreen;
-}
-
-.lamp.toxic{
-    background:red;
-    box-shadow:0 0 60px red;
-}
 #toxicity-bar-container {
     width: 100%;
-    height: 20px;
-    background-color: #000000;
-    border: 2px solid white;
+    height: 18px;
+    background-color: #111;
+    border: 2px solid #444;
     border-radius: 10px;
     margin-top: 20px;
     overflow: hidden;
@@ -142,13 +92,14 @@ font-size: 36px;
 
 #toxicity-bar {
     height: 100%;
-    width: 50%;
-    background-color: rgb(255, 255, 255);
-    transition: width 0.5s ease, background-color 0.5s ease;
-}
-#toxicity-bar {
+    width: 0%;
+    background-color: green;
+    transition: 0.5s ease;
     border-radius: 10px;
 }
-.container {
-    background-color: rgb(0, 0, 0) !important;
+
+#toxicity-text {
+    margin-top: 12px;
+    font-size: 14px;
+    color: #cbd5f5;
 }
